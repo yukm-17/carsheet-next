@@ -1,65 +1,181 @@
-import Image from "next/image";
+import ContentBox from '@/app/components/ContentBox'
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Checkbox } from '@/components/ui/checkbox'
+import { Field, FieldGroup, FieldLabel } from '@/components/ui/field'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import {
+	Select,
+	SelectContent,
+	SelectGroup,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from '@/components/ui/select'
+import { Slider } from '@/components/ui/slider'
+import { Search } from 'lucide-react'
 
 export default function Home() {
-  return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+	return (
+		<ContentBox>
+			<div className="flex flex-col gap-6">
+				<p className="text-2xl font-bold">차량 검색</p>
+
+				<div className="flex justify-between border rounded-md">
+					<Input
+						type="text"
+						placeholder="차량 모델명, 브랜드를 검색하세요"
+						className="border-none outline-none shadow-none bg-none transition-none focus-visible:ring-0 text-sm"
+					/>
+
+					<Button variant="outline" size="icon">
+						<Search />
+					</Button>
+				</div>
+
+				<ul className="flex gap-2 items-center">
+					<li>
+						<Badge asChild>
+							<Button className="font-bold">추천 검색어</Button>
+						</Badge>
+					</li>
+					<li>
+						<Badge asChild>
+							<Button className="">추천 검색어</Button>
+						</Badge>
+					</li>
+					<li>
+						<Badge asChild>
+							<Button className="">추천 검색어</Button>
+						</Badge>
+					</li>
+				</ul>
+
+				<FieldGroup className="grid grid-cols-3 gap-6 items-center">
+					<Field className="flex flex-col gap-2">
+						<FieldLabel htmlFor="search-type-brand">브랜드</FieldLabel>
+
+						<Select defaultValue="all">
+							<SelectTrigger id="search-type-brand" className="w-full">
+								<SelectValue placeholder="브랜드를 선택하세요" />
+							</SelectTrigger>
+
+							<SelectContent>
+								<SelectGroup>
+									<SelectItem value="all">전체</SelectItem>
+									<SelectItem value="01">01</SelectItem>
+									<SelectItem value="02">02</SelectItem>
+									<SelectItem value="03">03</SelectItem>
+									<SelectItem value="04">04</SelectItem>
+									<SelectItem value="05">05</SelectItem>
+									<SelectItem value="06">06</SelectItem>
+									<SelectItem value="07">07</SelectItem>
+									<SelectItem value="08">08</SelectItem>
+									<SelectItem value="09">09</SelectItem>
+									<SelectItem value="10">10</SelectItem>
+									<SelectItem value="11">11</SelectItem>
+									<SelectItem value="12">12</SelectItem>
+								</SelectGroup>
+							</SelectContent>
+						</Select>
+					</Field>
+					<Field className="flex flex-col gap-2">
+						<FieldLabel htmlFor="search-type-price">가격</FieldLabel>
+
+						<Slider id="search-type-price" defaultValue={[75]} max={100} step={1} />
+					</Field>
+					<Field className="flex flex-col gap-2">
+						<FieldLabel htmlFor="search-type-fuel">연료 타입</FieldLabel>
+
+						<Select defaultValue="all">
+							<SelectTrigger id="search-type-fuel" className="w-full">
+								<SelectValue placeholder="연료 타입을 선택하세요" />
+							</SelectTrigger>
+
+							<SelectContent>
+								<SelectGroup>
+									<SelectItem value="all">전체</SelectItem>
+									<SelectItem value="01">01</SelectItem>
+									<SelectItem value="02">02</SelectItem>
+									<SelectItem value="03">03</SelectItem>
+									<SelectItem value="04">04</SelectItem>
+									<SelectItem value="05">05</SelectItem>
+									<SelectItem value="06">06</SelectItem>
+									<SelectItem value="07">07</SelectItem>
+									<SelectItem value="08">08</SelectItem>
+									<SelectItem value="09">09</SelectItem>
+									<SelectItem value="10">10</SelectItem>
+									<SelectItem value="11">11</SelectItem>
+									<SelectItem value="12">12</SelectItem>
+								</SelectGroup>
+							</SelectContent>
+						</Select>
+					</Field>
+				</FieldGroup>
+
+				<div className="flex flex-col gap-2">
+					<Label>주제</Label>
+
+					<FieldGroup>
+						<ul className="flex gap-2 items-center">
+							<li>
+								<Badge asChild>
+									<Field>
+										<Checkbox id="search-concept-1" className="peer sr-only" />
+										<FieldLabel
+											htmlFor="search-concept-1"
+											className="cursor-pointer
+											select-none
+											transition-colors
+											peer-data-[state=checked]:text-red-600
+											peer-data-[state=checked]:font-bold"
+										>
+											test
+										</FieldLabel>
+									</Field>
+								</Badge>
+							</li>
+							<li>
+								<Badge asChild>
+									<Field>
+										<Checkbox id="search-concept-1" className="peer sr-only" />
+										<FieldLabel
+											htmlFor="search-concept-1"
+											className="cursor-pointer
+											select-none
+											transition-colors
+											peer-data-[state=checked]:text-red-600
+											peer-data-[state=checked]:font-bold"
+										>
+											test
+										</FieldLabel>
+									</Field>
+								</Badge>
+							</li>
+							<li>
+								<Badge asChild>
+									<Field>
+										<Checkbox id="search-concept-1" className="peer sr-only" />
+										<FieldLabel
+											htmlFor="search-concept-1"
+											className="cursor-pointer
+											select-none
+											transition-colors
+											peer-data-[state=checked]:text-red-600
+											peer-data-[state=checked]:font-bold"
+										>
+											test
+										</FieldLabel>
+									</Field>
+								</Badge>
+							</li>
+						</ul>
+					</FieldGroup>
+				</div>
+
+				<Button>검색하기</Button>
+			</div>
+		</ContentBox>
+	)
 }
