@@ -29,7 +29,9 @@ export default function RootLayout({
 				<NavBar />
 
 				<div className="flex min-h-screen items-center justify-center font-sans">
-					<div className="w-full max-w-4xl min-h-screen">{children}</div>
+					<div className="w-full max-w-4xl min-h-screen">
+						<div className="flex flex-col gap-10">{children}</div>
+					</div>
 				</div>
 			</body>
 		</html>
