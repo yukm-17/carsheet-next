@@ -1,3 +1,4 @@
+import Footer from '@/app/components/Footer'
 import NavBar from '@/app/components/NavBar'
 import type { Metadata } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
@@ -29,10 +30,12 @@ export default function RootLayout({
 				<NavBar />
 
 				<div className="flex min-h-screen items-center justify-center font-sans">
-					<div className="w-full max-w-4xl min-h-screen">
+					<div className="w-full max-w-5xl min-h-screen">
 						<div className="flex flex-col gap-10">{children}</div>
 					</div>
 				</div>
+
+				<Footer />
 			</body>
 		</html>
 	)

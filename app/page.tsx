@@ -3,6 +3,7 @@ import ContentHeader from '@/app/components/ContentHeader'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
+import { Card, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Field, FieldGroup, FieldLabel } from '@/components/ui/field'
 import { Input } from '@/components/ui/input'
@@ -407,6 +408,58 @@ export default function Home() {
 					<h3>내게 맞는 차량 바로 지금 겟</h3>
 					<p>AI 시스템으로 어쩌구 저쩌구 블라블라</p>
 					<Button>AI 추천 받기</Button>
+				</div>
+			</div>
+
+			<div className="flex flex-col gap-4">
+				<ContentHeader title="추천 차량 리스트" description="당신을 위한 맞춤 차량 추천" />
+
+				<div className="grid grid-cols-3 gap-4">
+					<Card className="mx-auto w-full max-w-sm pt-0 overflow-hidden">
+						<Image
+							src="https://placehold.co/600x400"
+							width={600}
+							height={400}
+							alt="Event cover"
+							className="aspect-video object-cover"
+							unoptimized
+						/>
+
+						<CardHeader>
+							<CardTitle>현대 아이오닉 6</CardTitle>
+
+							<CardDescription>
+								<div className="flex gap-4">
+									<p className="inline-flex font-bold">
+										<StarIcon /> 4.5<span>(2,875)</span>
+									</p>
+									<p className="inline-flex font-bold text-lg text-teal-700">4,280만원</p>
+								</div>
+
+								<ul className="flex gap-2 items-center">
+									<li>
+										<Badge>가솔린</Badge>
+									</li>
+									<li>
+										<Badge>2.5L</Badge>
+									</li>
+									<li>
+										<Badge>8인승</Badge>
+									</li>
+								</ul>
+							</CardDescription>
+						</CardHeader>
+
+						<CardFooter>
+							<div className="flex gap-2 w-full">
+								<Button className="flex-1">상세보기</Button>
+
+								<Button variant="outline">
+									<HeartIcon />
+								</Button>
+							</div>
+						</CardFooter>
+					</Card>
 				</div>
 			</div>
 		</>
