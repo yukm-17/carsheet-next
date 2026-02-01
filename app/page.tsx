@@ -187,7 +187,7 @@ export default function Home() {
 				</div>
 			</ContentBox>
 
-			<div className="flex flex-col gap-4">
+			<section className="flex flex-col gap-4">
 				<ContentHeader title="자동차 인기 순위">
 					<div className="flex gap-2">
 						<Button variant="outline">월간</Button>
@@ -236,9 +236,9 @@ export default function Home() {
 						</div>
 					</div>
 				</ContentBox>
-			</div>
+			</section>
 
-			<div className="flex flex-col gap-4">
+			<section className="flex flex-col gap-4">
 				<ContentHeader title="사용자 평점">
 					<Button variant="outline">리뷰쓰기</Button>
 				</ContentHeader>
@@ -368,9 +368,9 @@ export default function Home() {
 				</div>
 
 				<Button variant="outline">더 많은 리뷰 보기</Button>
-			</div>
+			</section>
 
-			<div className="flex flex-col gap-4">
+			<section className="flex flex-col gap-4">
 				<ContentHeader title="맞춤 광고" />
 
 				<div className="grid grid-cols-2 gap-4">
@@ -409,9 +409,9 @@ export default function Home() {
 					<p>AI 시스템으로 어쩌구 저쩌구 블라블라</p>
 					<Button>AI 추천 받기</Button>
 				</div>
-			</div>
+			</section>
 
-			<div className="flex flex-col gap-4">
+			<section className="flex flex-col gap-4">
 				<ContentHeader title="추천 차량 리스트" description="당신을 위한 맞춤 차량 추천" />
 
 				<div className="grid grid-cols-3 gap-4">
@@ -461,7 +461,7 @@ export default function Home() {
 						</CardFooter>
 					</Card>
 				</div>
-			</div>
+			</section>
 		</>
 	)
 }

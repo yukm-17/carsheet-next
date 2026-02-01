@@ -15,16 +15,16 @@ const NavBar = () => {
 							<Link href="/">최신 리뷰</Link>
 						</li>
 						<li>
-							<Link href="/">차량 비교</Link>
+							<Link href="/sheet">차량 비교</Link>
 						</li>
 						<li>
-							<Link href="/">커뮤니티</Link>
+							<Link href="/community">커뮤니티</Link>
 						</li>
 						<li>
 							<Link href="/">추천 차량</Link>
 						</li>
 						<li>
-							<Link href="/">마이페이지</Link>
+							<Link href="/user/1">마이페이지</Link>
 						</li>
 					</ul>
 				</div>
