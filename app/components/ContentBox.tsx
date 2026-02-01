@@ -13,10 +13,10 @@ const ContentBox = ({ header, children }: ContentBoxProps) => {
 				{children}
 			</ContentHeader>
 
-			<div className="bg-white rounded-md px-10 py-8 shadow-sm">{children}</div>
+			<div className="bg-white rounded-lg px-10 py-8 shadow-md">{children}</div>
 		</div>
 	) : (
-		<div className="bg-white rounded-md px-10 py-8 shadow-sm">{children}</div>
+		<div className="bg-white rounded-lg px-10 py-8 shadow-md">{children}</div>
 	)
 }
 

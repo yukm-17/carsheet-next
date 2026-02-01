@@ -32,7 +32,7 @@ export default function Home() {
 						<Input
 							type="text"
 							placeholder="차량 모델명, 브랜드를 검색하세요"
-							className="border-none outline-none shadow-none bg-none transition-none focus-visible:ring-0 text-sm"
+							className="border-none outline-none shadow-none bg-none transition-none focus-visible:ring-0"
 						/>
 
 						<Button variant="outline" size="icon">
@@ -58,9 +58,11 @@ export default function Home() {
 						</li>
 					</ul>
 
-					<FieldGroup className="grid grid-cols-3 gap-6 items-center">
+					<FieldGroup className="grid grid-cols-3 gap-6">
 						<Field className="flex flex-col gap-2">
-							<FieldLabel htmlFor="search-type-brand">브랜드</FieldLabel>
+							<FieldLabel htmlFor="search-type-brand" className="">
+								브랜드
+							</FieldLabel>
 
 							<Select defaultValue="all">
 								<SelectTrigger id="search-type-brand" className="w-full">
@@ -127,19 +129,17 @@ export default function Home() {
 							<ul className="flex gap-2 items-center">
 								<li>
 									<Badge asChild>
-										<Field>
-											<Checkbox id="search-concept-1" className="peer sr-only" />
-											<FieldLabel
-												htmlFor="search-concept-1"
-												className="cursor-pointer
+										<Label
+											htmlFor="search-concept-1"
+											className="cursor-pointer
 											select-none
 											transition-colors
-											peer-data-[state=checked]:text-red-600
-											peer-data-[state=checked]:font-bold"
-											>
-												test
-											</FieldLabel>
-										</Field>
+											[&:has([data-state=checked])_span]:text-red-600
+											[&:has([data-state=checked])_span]:font-bold"
+										>
+											<Checkbox id="search-concept-1" className="sr-only" />
+											<span>test</span>
+										</Label>
 									</Badge>
 								</li>
 								<li>
