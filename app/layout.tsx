@@ -29,8 +29,8 @@ export default function RootLayout({
 			<body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
 				<NavBar />
 
-				<div className="p-20 pt-32 flex min-h-screen items-center justify-center font-sans from-gray-50 via-teal-50 to-blue-50 bg-linear-to-br">
-					<div className="w-full max-w-5xl min-h-screen">
+				<div className="p-20 pt-32 flex justify-center font-sans from-gray-50 via-teal-50 to-blue-50 bg-linear-to-br">
+					<div className="w-full max-w-7xl">
 						<div className="flex flex-col gap-16">{children}</div>
 					</div>
 				</div>
