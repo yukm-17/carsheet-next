@@ -6,7 +6,7 @@ interface TableRowProps {
 	className?: string
 }
 
-const TableRow = ({ headText, children, className }: TableRowProps) => {
+const CustomTableRow = ({ headText, children, className }: TableRowProps) => {
 	return (
 		<div className="flex">
 			<div className="outline-1 outline-gray-200 -outline-offset-1 px-5 py-4 w-36">
@@ -18,4 +18,4 @@ const TableRow = ({ headText, children, className }: TableRowProps) => {
 	)
 }
 
-export default TableRow
+export default CustomTableRow

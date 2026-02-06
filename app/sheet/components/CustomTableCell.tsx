@@ -4,7 +4,7 @@ interface TableCellProps {
 	children: ReactNode
 }
 
-const TableCell = ({ children }: TableCellProps) => {
+const CustomTableCell = ({ children }: TableCellProps) => {
 	return (
 		<div className="outline-1 outline-gray-200 -outline-offset-1 px-2 py-4 flex flex-1 justify-center items-center text-center">
 			{children}
@@ -12,4 +12,4 @@ const TableCell = ({ children }: TableCellProps) => {
 	)
 }
 
-export default TableCell
+export default CustomTableCell

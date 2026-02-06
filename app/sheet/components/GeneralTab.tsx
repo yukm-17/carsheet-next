@@ -1,5 +1,5 @@
-import TableCell from '@/app/sheet/components/TableCell'
-import TableRow from '@/app/sheet/components/TableRow'
+import CustomTableCell from '@/app/sheet/components/CustomTableCell'
+import CustomTableRow from '@/app/sheet/components/CustomTableRow'
 import { ModelTypes } from '@/app/sheet/types/types'
 
 interface GeneralTabProps {
@@ -10,40 +10,40 @@ const GeneralTab = ({ data }: GeneralTabProps) => {
 	return (
 		<ul>
 			<li>
-				<TableRow headText="브랜드">
+				<CustomTableRow headText="브랜드">
 					{data.map(item => (
-						<TableCell key={item.dataId}>
+						<CustomTableCell key={item.dataId}>
 							<span>{item.brand.name}</span>
-						</TableCell>
+						</CustomTableCell>
 					))}
-				</TableRow>
+				</CustomTableRow>
 			</li>
 			<li>
-				<TableRow headText="모델명">
+				<CustomTableRow headText="모델명">
 					{data.map(item => (
-						<TableCell key={item.dataId}>
+						<CustomTableCell key={item.dataId}>
 							<span>{item.name}</span>
-						</TableCell>
+						</CustomTableCell>
 					))}
-				</TableRow>
+				</CustomTableRow>
 			</li>
 			<li>
-				<TableRow headText="연식">
+				<CustomTableRow headText="연식">
 					{data.map(item => (
-						<TableCell key={item.dataId}>
+						<CustomTableCell key={item.dataId}>
 							<span>{item.year}</span>
-						</TableCell>
+						</CustomTableCell>
 					))}
-				</TableRow>
+				</CustomTableRow>
 			</li>
 			<li>
-				<TableRow headText="가격">
+				<CustomTableRow headText="가격">
 					{data.map(item => (
-						<TableCell key={item.dataId}>
+						<CustomTableCell key={item.dataId}>
 							<span>{item.price}</span>
-						</TableCell>
+						</CustomTableCell>
 					))}
-				</TableRow>
+				</CustomTableRow>
 			</li>
 		</ul>
 	)
