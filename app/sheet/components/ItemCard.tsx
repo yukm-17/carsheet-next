@@ -1,5 +1,13 @@
+import CarListDialog from '@/app/sheet/components/CarListDialog'
 import { ItemCardProps } from '@/app/sheet/types/types'
 import { Button } from '@/components/ui/button'
+import {
+	Dialog,
+	DialogContent,
+	DialogHeader,
+	DialogTitle,
+	DialogTrigger,
+} from '@/components/ui/dialog'
 import { CircleX, PlusIcon } from 'lucide-react'
 
 const ItemCard = ({ data }: ItemCardProps) => {
@@ -25,15 +33,27 @@ const ItemCard = ({ data }: ItemCardProps) => {
 			</div>
 		</div>
 	) : (
-		<div className="border-dashed border-2 rounded-lg overflow-hidden">
-			<Button variant="ghost" asChild>
-				<div className="flex flex-col gap-4 items-center justify-center w-full h-full cursor-pointer">
-					<PlusIcon />
+		<Dialog>
+			<DialogTrigger>
+				<div className="w-full h-full border-dashed border-2 rounded-lg overflow-hidden">
+					<Button variant="ghost" asChild>
+						<div className="flex flex-col gap-4 items-center justify-center w-full h-full cursor-pointer">
+							<PlusIcon />
 
-					<p>차량 선택</p>
+							<p>차량 선택</p>
+						</div>
+					</Button>
 				</div>
-			</Button>
-		</div>
+			</DialogTrigger>
+
+			<DialogContent className="sm:max-w-4xl">
+				<DialogHeader>
+					<DialogTitle>Title</DialogTitle>
+				</DialogHeader>
+
+				<CarListDialog />
+			</DialogContent>
+		</Dialog>
 	)
 }
 
