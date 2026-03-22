@@ -1,6 +1,6 @@
 'use client'
 
-import { FixedItemCardArray } from '@/app/sheet/types/types'
+import { ItemCardData } from '@/app/sheet/types/types'
 import {
 	createContext,
 	Dispatch,
@@ -11,8 +11,8 @@ import {
 } from 'react'
 
 type PageContextValue = {
-	selectedData: FixedItemCardArray | undefined
-	setSelectedData: Dispatch<SetStateAction<FixedItemCardArray | undefined>>
+	selectedData: ItemCardData[] | undefined
+	setSelectedData: Dispatch<SetStateAction<ItemCardData[] | undefined>>
 }
 
 const PageContext = createContext<PageContextValue | undefined>(undefined)
@@ -29,7 +29,7 @@ export const usePageContext = () => {
 
 export const PageProvider = ({ children }: PropsWithChildren) => {
 	// 사용자가 선택한 비교 대상
-	const [selectedData, setSelectedData] = useState<FixedItemCardArray>()
+	const [selectedData, setSelectedData] = useState<ItemCardData[]>()
 
 	return (
 		<PageContext.Provider value={{ selectedData, setSelectedData }}>

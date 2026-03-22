@@ -1,16 +1,16 @@
 export interface ModelTypes {
 	id: string
 	dataId: string
-	name: string
+	name: string | null
 	brand: {
-		name: string
+		name: string | null
 	}
 	image: {
-		name: string
-		src: string
+		name: string | null
+		src: string | null
 	}
-	price: number
-	year: string
+	price: number | null
+	year: number | null
 }
 
 export interface EngineTypes {
@@ -59,17 +59,13 @@ export interface ConvenienceFeaturesTypes {
 export interface ItemCardData {
 	id: string
 	model: ModelTypes
-	engine: EngineTypes
-	quality: QualityTypes
-	spec: SpecTypes
-	carrying: CarryTypes
-	convenienceFeatures: ConvenienceFeaturesTypes
+	engine?: EngineTypes | null
+	quality?: QualityTypes | null
+	spec?: SpecTypes | null
+	carrying?: CarryTypes | null
+	convenienceFeatures?: ConvenienceFeaturesTypes | null
 }
 
 export interface ItemCardProps {
-	data?: ItemCardData
+	data?: ItemCardData | null
 }
-
-export type ItemCardSlot = ItemCardData | undefined
-
-export type FixedItemCardArray = [ItemCardSlot, ItemCardSlot, ItemCardSlot, ItemCardSlot]

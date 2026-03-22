@@ -1,6 +1,9 @@
 'use client'
 
+import { usePageContext } from '@/app/sheet/PageContext'
+import { ItemCardData } from '@/app/sheet/types/types'
 import { Database } from '@/app/types/supabase'
+import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { createClient } from '@supabase/supabase-js'
 import { useEffect, useState } from 'react'
@@ -14,6 +17,8 @@ const CarListDialog = () => {
 	const [data, setData] = useState<Database['public']['Views']['vehicle_with_image']['Row'][]>([])
 	const [isLoading, setIsLoading] = useState<boolean>(true)
 	const [keyword, setKeyword] = useState<string>('')
+
+	const { selectedData, setSelectedData } = usePageContext()
 
 	const fetchData = async () => {
 		setIsLoading(true)
@@ -35,6 +40,30 @@ const CarListDialog = () => {
 
 		setData(data ?? [])
 		setIsLoading(false)
+	}
+
+	const handleSelectedData = (data: Database['public']['Views']['vehicle_with_image']['Row']) => {
+		const newData: ItemCardData = {
+			id: data.id!,
+			model: {
+				id: data.id!,
+				dataId: data.id!,
+				name: data.model,
+				brand: {
+					name: data.brand,
+				},
+				image: {
+					name: data.model,
+					src: data.image_url,
+				},
+				price: data.price,
+				year: data.year,
+			},
+		}
+
+		const newArray: ItemCardData[] = selectedData ? [...selectedData, newData] : [newData]
+
+		setSelectedData(newArray)
 	}
 
 	useEffect(() => {
@@ -61,24 +90,26 @@ const CarListDialog = () => {
 			{data.length > 0 ? (
 				<div className="-mx-4 no-scrollbar max-h-[50vh] overflow-y-auto grid grid-cols-3 gap-4 px-4">
 					{data.map(item => (
-						<div
-							key={item.id ?? `${item.brand ?? ''}-${item.model ?? ''}`}
-							className="border border-zinc-300 rounded-lg overflow-hidden p-3 w-full h-56"
-						>
-							<div className="flex flex-col gap-4 w-full h-full">
-								<div className="flex justify-center items-center h-32 rounded-md shadow-sm overflow-hidden">
-									<img
-										src={item.image_url ?? 'https://placehold.co/600x400'}
-										alt={item.model ?? 'sample'}
-									/>
-								</div>
+						<Button variant="ghost" asChild onClick={() => handleSelectedData(item)}>
+							<div
+								key={item.id ?? `${item.brand ?? ''}-${item.model ?? ''}`}
+								className="border border-zinc-300 rounded-lg overflow-hidden p-3 w-full h-56 cursor-pointer"
+							>
+								<div className="flex flex-col gap-4 w-full h-full">
+									<div className="flex justify-center items-center h-32 rounded-md shadow-sm overflow-hidden">
+										<img
+											src={item.image_url ?? 'https://placehold.co/600x400'}
+											alt={item.model ?? 'sample'}
+										/>
+									</div>
 
-								<div>
-									<p className="font-bold">{item.model}</p>
-									<p>{item.brand}</p>
+									<div>
+										<p className="font-bold">{item.model}</p>
+										<p>{item.brand}</p>
+									</div>
 								</div>
 							</div>
-						</div>
+						</Button>
 					))}
 				</div>
 			) : (
