@@ -1,4 +1,5 @@
 import CarListDialog from '@/app/sheet/components/CarListDialog'
+import { usePageContext } from '@/app/sheet/PageContext'
 import { ItemCardProps } from '@/app/sheet/types/types'
 import { Button } from '@/components/ui/button'
 import {
@@ -8,13 +9,24 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from '@/components/ui/dialog'
-import { CircleX, PlusIcon } from 'lucide-react'
+import { PlusIcon, X } from 'lucide-react'
 
 const ItemCard = ({ data }: ItemCardProps) => {
+	const { setSelectedData } = usePageContext()
+
+	const handleDeleteItem = () => {
+		setSelectedData(prev => prev?.filter(item => item.id !== data?.id))
+	}
+
 	return data ? (
 		<div className="relative border-2 border-teal-500 rounded-lg overflow-hidden p-4">
-			<Button className="absolute top-1.5 right-1.5">
-				<CircleX />
+			<Button
+				variant="outline"
+				size="icon-lg"
+				className="absolute top-1.5 right-1.5 rounded-full"
+				onClick={handleDeleteItem}
+			>
+				<X />
 			</Button>
 
 			<div className="flex flex-col gap-4 w-full h-full">

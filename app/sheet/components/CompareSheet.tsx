@@ -58,7 +58,7 @@ const CompareSheet = () => {
 			</ContentBox>
 
 			<ContentBox>
-				{selectedData ? (
+				{selectedData && selectedData.length > 0 ? (
 					<div>
 						<Tabs defaultValue="general" className="w-full">
 							<TabsList
